@@ -20,7 +20,7 @@ router.get('/:id', async(req, res) => {
     }
 })
 
-router.post("/create/", async(req, res) => {
+router.post("/", async(req, res) => {
     const issues = new Issue({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -38,7 +38,7 @@ router.post("/create/", async(req, res) => {
     }
 })
 
-router.patch("/update/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
 
     //Grab data from frontend request - input values
     const newIssueDesc = req.body.newIssueDesc
@@ -59,7 +59,7 @@ router.patch("/update/:id", async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async(req, res) => {
+router.delete('/:id', async(req, res) => {
     try{
         const issues = await Issue.findById(req.params.id)
         const a1 = await issues.remove()
