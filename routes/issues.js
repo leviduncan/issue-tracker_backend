@@ -38,27 +38,6 @@ router.post("/", async(req, res) => {
     }
 })
 
-router.patch("/:id", async (req, res) => {
-
-    //Grab data from frontend request - input values
-    const newIssueDesc = req.body.newIssueDesc
-    const newIssueType = req.body.newIssueType
-    const newPriority = req.body.newPriority
-    // const id = req.body.id
-
-    try {
-        const issues =  await Issue.findById(req.params.id)
-            issues.issueDesc = newIssueDesc
-            issues.issueType = newIssueType
-            issues.priority = newPriority
-            const a1 = await issues.save()
-            res.json(a1)
-        
-    } catch (err) {
-        res.send('Error: ' + err)
-    }
-})
-
 router.put("/:id", async (req, res) => {
     try{
         const updateItem = await Issue.findByIdAndUpdate(req.params.id, {$set: req.body})
